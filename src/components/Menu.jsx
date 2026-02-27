@@ -18,7 +18,7 @@ const Menu = () => {
       name: 'Citrus Sunrise',
       description: 'Orange, Carrot, Ginger, and a hint of Lemon.',
       price: '$5.50',
-      image: 'https://images.unsplash.com/photo-1622597466542-9f150f8373a0?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ const Menu = () => {
       name: 'Green Detox',
       description: 'Kale, Spinach, Green Apple, Celery, and Cucumber.',
       price: '$6.00',
-      image: 'https://images.unsplash.com/photo-1600271886742-f049cd451b66?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.pexels.com/photos/1337825/pexels-photo-1337825.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ const Menu = () => {
       name: 'Beet It Up',
       description: 'Beetroot, Carrot, Apple, and Lemon.',
       price: '$5.50',
-      image: 'https://images.unsplash.com/photo-1550461716-ba4eea92d110?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.pexels.com/photos/4051082/pexels-photo-4051082.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       id: 4,
@@ -42,7 +42,7 @@ const Menu = () => {
       name: 'Classic Vanilla Bean',
       description: 'Real vanilla bean ice cream blended with organic milk.',
       price: '$6.50',
-      image: 'https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       id: 5,
@@ -50,7 +50,7 @@ const Menu = () => {
       name: 'Oreo Overload',
       description: 'Crushed Oreos, chocolate syrup, and vanilla ice cream.',
       price: '$7.00',
-      image: 'https://images.unsplash.com/photo-1610970881699-44a50b731f24?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.pexels.com/photos/616836/pexels-photo-616836.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       id: 6,
@@ -58,7 +58,7 @@ const Menu = () => {
       name: 'Tropical Mango',
       description: 'Mango, Pineapple, Banana, and Coconut Water.',
       price: '$6.75',
-      image: 'https://images.unsplash.com/photo-1638176066666-ffb2f013c7dd?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.pexels.com/photos/1251175/pexels-photo-1251175.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       id: 7,
@@ -66,7 +66,7 @@ const Menu = () => {
       name: 'Berry Blast',
       description: 'Strawberries, Blueberries, Raspberries, and Almond Milk.',
       price: '$7.25',
-      image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.pexels.com/photos/4328273/pexels-photo-4328273.jpeg?auto=compress&cs=tinysrgb&w=800'
     },
     {
       id: 8,
@@ -74,7 +74,7 @@ const Menu = () => {
       name: 'Watermelon Breeze',
       description: 'Pure watermelon juice fresh mint leaves. (Summer only)',
       price: '$5.00',
-      image: 'https://images.unsplash.com/photo-1579954115545-a95591f28b20?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&w=800'
     }
   ];
 

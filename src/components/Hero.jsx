@@ -9,7 +9,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/80 to-brand-dark/40 z-10" />
         <img 
-          src="https://images.unsplash.com/photo-1622597466185-daebc88f11ca?auto=format&fit=crop&w=800&q=80" 
+          src="https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&w=1920" 
           alt="Fresh Juice Background" 
           className="w-full h-full object-cover"
         />

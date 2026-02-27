@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 
 const Gallery = () => {
   const images = [
-    "https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1603569283847-aa295f0d016a?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1622597466542-9f150f8373a0?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1600271886742-f049cd451b66?auto=format&fit=crop&w=800&q=80"
+    "https://images.pexels.com/photos/1251175/pexels-photo-1251175.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/4051082/pexels-photo-4051082.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/1337825/pexels-photo-1337825.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/616836/pexels-photo-616836.jpeg?auto=compress&cs=tinysrgb&w=800"
   ];
 
   return (
