@@ -77,10 +77,10 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button aria-label="Toggle Navigation Menu" 
+        <button 
           className="md:hidden p-2 rounded-lg"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
+          aria-label="Toggle Navigation Menu"
         >
           {isOpen ? <X className={isScrolled ? 'text-brand-dark' : 'text-white'} /> : <Menu className={isScrolled ? 'text-brand-dark' : 'text-white'} />}
         </button>
