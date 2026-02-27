@@ -55,14 +55,14 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-4"
           >
             <a 
-              href="#menu" 
+              href="#menu" aria-label="View our Menu" 
               className="px-8 py-4 bg-brand-orange hover:bg-brand-darkOrange text-white rounded-full font-medium transition-all shadow-lg hover:shadow-brand-orange/30 flex items-center justify-center gap-2 group"
             >
               View Menu
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a 
-              href="#about" 
+              href="#about" aria-label="Read our Story" 
               className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white rounded-full font-medium transition-all flex items-center justify-center border border-white/20"
             >
               Our Story

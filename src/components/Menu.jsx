@@ -1,82 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import menuData from '../data/menu.json';
 
 const Menu = () => {
   const [activeTab, setActiveTab] = useState('Fresh Juices');
 
-  const categories = [
-    'Fresh Juices',
-    'Milkshakes',
-    'Smoothies',
-    'Seasonal Specials'
-  ];
-
-  const menuItems = [
-    {
-      id: 1,
-      category: 'Fresh Juices',
-      name: 'Citrus Sunrise',
-      description: 'Orange, Carrot, Ginger, and a hint of Lemon.',
-      price: '$5.50',
-      image: 'https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 2,
-      category: 'Fresh Juices',
-      name: 'Green Detox',
-      description: 'Kale, Spinach, Green Apple, Celery, and Cucumber.',
-      price: '$6.00',
-      image: 'https://images.pexels.com/photos/1337825/pexels-photo-1337825.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 3,
-      category: 'Fresh Juices',
-      name: 'Beet It Up',
-      description: 'Beetroot, Carrot, Apple, and Lemon.',
-      price: '$5.50',
-      image: 'https://images.pexels.com/photos/4051082/pexels-photo-4051082.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 4,
-      category: 'Milkshakes',
-      name: 'Classic Vanilla Bean',
-      description: 'Real vanilla bean ice cream blended with organic milk.',
-      price: '$6.50',
-      image: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 5,
-      category: 'Milkshakes',
-      name: 'Oreo Overload',
-      description: 'Crushed Oreos, chocolate syrup, and vanilla ice cream.',
-      price: '$7.00',
-      image: 'https://images.pexels.com/photos/616836/pexels-photo-616836.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 6,
-      category: 'Smoothies',
-      name: 'Tropical Mango',
-      description: 'Mango, Pineapple, Banana, and Coconut Water.',
-      price: '$6.75',
-      image: 'https://images.pexels.com/photos/1251175/pexels-photo-1251175.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 7,
-      category: 'Smoothies',
-      name: 'Berry Blast',
-      description: 'Strawberries, Blueberries, Raspberries, and Almond Milk.',
-      price: '$7.25',
-      image: 'https://images.pexels.com/photos/4328273/pexels-photo-4328273.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 8,
-      category: 'Seasonal Specials',
-      name: 'Watermelon Breeze',
-      description: 'Pure watermelon juice fresh mint leaves. (Summer only)',
-      price: '$5.00',
-      image: 'https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&w=800'
-    }
-  ];
+  const categories = menuData.categories;
+  const menuItems = menuData.items;
 
   const filteredItems = menuItems.filter(item => item.category === activeTab);
 
@@ -121,7 +51,7 @@ const Menu = () => {
               className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-soft transition-shadow border border-gray-100 group flex flex-col"
             >
               <div className="relative h-48 overflow-hidden">
-                <img 
+                <img loading="lazy" 
                   src={item.image} 
                   alt={item.name} 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

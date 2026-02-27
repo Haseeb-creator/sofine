@@ -1,28 +1,39 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import History from './components/History';
-import Menu from './components/Menu';
-import Features from './components/Features';
-import Gallery from './components/Gallery';
-import Testimonials from './components/Testimonials';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
+
+// Lazy load all main sections for performance
+const Hero = lazy(() => import('./components/Hero'));
+const About = lazy(() => import('./components/About'));
+const History = lazy(() => import('./components/History'));
+const Features = lazy(() => import('./components/Features'));
+const Menu = lazy(() => import('./components/Menu'));
+const Gallery = lazy(() => import('./components/Gallery'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const Contact = lazy(() => import('./components/Contact'));
+
+// A sleek fallback loader for suspense
+const PageLoader = () => (
+  <div className="min-h-[50vh] flex items-center justify-center bg-brand-bg">
+    <div className="w-12 h-12 rounded-full border-4 border-brand-orange/20 border-t-brand-orange animate-spin"></div>
+  </div>
+);
 
 function App() {
   return (
-    <div className="min-h-screen bg-brand-bg relative overflow-hidden">
+    <div className="min-h-screen bg-brand-bg relative overflow-hidden font-sans text-brand-dark">
       <Navbar />
       <main>
-        <Hero />
-        <About />
-        <History />
-        <Features />
-        <Menu />
-        <Gallery />
-        <Testimonials />
-        <Contact />
+        <Suspense fallback={<PageLoader />}>
+          <Hero />
+          <About />
+          <History />
+          <Features />
+          <Menu />
+          <Gallery />
+          <Testimonials />
+          <Contact />
+        </Suspense>
       </main>
       <Footer />
     </div>

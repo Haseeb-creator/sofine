@@ -59,7 +59,7 @@ const Testimonials = () => {
 
             {/* Avatar */}
             <div className="absolute -top-10 left-8">
-              <img 
+              <img loading="lazy" 
                 src={review.image} 
                 alt={review.name} 
                 className="w-20 h-20 rounded-full border-4 border-white shadow-md object-cover"

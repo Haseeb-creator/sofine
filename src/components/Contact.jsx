@@ -8,6 +8,7 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [status, setStatus] = useState('idle'); // idle, submitting, success, error
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value});
@@ -15,8 +16,16 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you for reaching out! This is a placeholder form submission.');
-    setFormData({name: '', email: '', message: ''});
+    setStatus('submitting');
+    
+    // Simulate API call for form submission
+    setTimeout(() => {
+      setStatus('success');
+      setFormData({name: '', email: '', message: ''});
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setStatus('idle'), 5000);
+    }, 1500);
   };
 
   return (
@@ -144,12 +153,20 @@ const Contact = () => {
                 ></textarea>
               </div>
 
+              {status === 'success' && (
+                <div role="alert" className="bg-brand-green/10 text-brand-darkGreen p-4 rounded-xl border border-brand-green/20 font-medium text-center">
+                  Thank you! Your message has been sent successfully.
+                </div>
+              )}
+
               <button 
                 type="submit"
-                className="w-full bg-brand-orange hover:bg-brand-darkOrange text-white font-bold py-4 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 mt-2"
+                disabled={status === 'submitting'}
+                className="w-full bg-brand-orange hover:bg-brand-darkOrange disabled:bg-brand-muted text-white font-bold py-4 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 mt-2"
+                aria-live="polite"
               >
-                Send Message
-                <Send size={18} />
+                {status === 'submitting' ? 'Sending...' : 'Send Message'}
+                {status !== 'submitting' && <Send size={18} />}
               </button>
 
             </form>

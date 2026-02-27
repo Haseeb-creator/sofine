@@ -28,7 +28,7 @@ const Gallery = () => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="relative aspect-square md:aspect-[4/3] w-full overflow-hidden group outline-none"
           >
-            <img 
+            <img loading="lazy" 
               src={src} 
               alt={`Gallery image ${index + 1}`} 
               className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-transform duration-700 ease-in-out"

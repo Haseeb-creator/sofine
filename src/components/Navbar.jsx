@@ -14,12 +14,35 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Menu', href: '#menu' },
-    { name: 'Gallery', href: '#gallery' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#home', id: 'home' },
+    { name: 'About', href: '#about', id: 'about' },
+    { name: 'Menu', href: '#menu', id: 'menu' },
+    { name: 'Gallery', href: '#gallery', id: 'gallery' },
+    { name: 'Contact', href: '#contact', id: 'contact' },
   ];
+
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+
+      // Scroll spy logic
+      const sections = navLinks.map(link => document.getElementById(link.id));
+      const scrollPosition = window.scrollY + 200; // Offset
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(navLinks[i].id);
+          break;
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // init
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-soft py-3' : 'bg-transparent py-5'}`}>
@@ -37,18 +60,24 @@ const Navbar = () => {
             <a 
               key={link.name} 
               href={link.href} 
-              className={`font-medium transition-colors hover:text-brand-green ${isScrolled ? 'text-brand-dark' : 'text-white/90 hover:text-white'}`}
+              className={`font-medium transition-colors ${
+                activeSection === link.id 
+                  ? 'text-brand-orange font-bold' 
+                  : isScrolled 
+                    ? 'text-brand-dark hover:text-brand-green' 
+                    : 'text-white/90 hover:text-white'
+              }`}
             >
               {link.name}
             </a>
           ))}
-          <a href="#contact" className="bg-brand-orange hover:bg-brand-darkOrange text-white px-6 py-2 rounded-full font-medium transition-colors shadow-md">
+          <a href="#contact" aria-label="Visit Store Contact Section" className="bg-brand-orange hover:bg-brand-darkOrange text-white px-6 py-2 rounded-full font-medium transition-colors shadow-md">
             Visit Store
           </a>
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button aria-label="Toggle Navigation Menu" 
           className="md:hidden p-2 rounded-lg"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
@@ -70,7 +99,7 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <a href="#contact" onClick={() => setIsOpen(false)} className="bg-brand-orange text-white text-center px-6 py-3 rounded-full font-medium mt-2">
+          <a href="#contact" aria-label="Visit Store Contact Section" onClick={() => setIsOpen(false)} className="bg-brand-orange text-white text-center px-6 py-3 rounded-full font-medium mt-2">
             Visit Store
           </a>
         </div>
