@@ -15,19 +15,19 @@ const About = () => {
         >
           <div className="flex flex-col gap-4 pt-10">
             <img 
-              src="https://placehold.co/600x400/FFF8E1/FF8A00?text=Brand+Imagery-4.0.3&auto=format&fit=crop&w=600&q=80" 
+              src="https://images.unsplash.com/photo-1623065422900-058f967f620f?auto=format&fit=crop&w=800&q=80" 
               alt="Pouring fresh juice" 
               className="w-full h-48 object-cover rounded-2xl shadow-soft"
             />
             <img 
-              src="https://placehold.co/600x400/FFF8E1/FF8A00?text=Brand+Imagery-4.0.3&auto=format&fit=crop&w=600&q=80" 
+              src="https://images.unsplash.com/photo-1626074211828-e4eb2e588bf3?auto=format&fit=crop&w=800&q=80" 
               alt="Fresh fruits" 
               className="w-full h-64 object-cover rounded-2xl shadow-soft"
             />
           </div>
           <div className="flex flex-col gap-4">
             <img 
-              src="https://placehold.co/600x400/FFF8E1/FF8A00?text=Brand+Imagery-4.0.3&auto=format&fit=crop&w=600&q=80" 
+              src="https://images.unsplash.com/photo-1589733955941-5eeaf752f6dd?auto=format&fit=crop&w=800&q=80" 
               alt="Smoothie bowl" 
               className="w-full h-64 object-cover rounded-2xl shadow-soft"
             />

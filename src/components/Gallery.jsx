@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 
 const Gallery = () => {
   const images = [
-    "https://placehold.co/600x400/FFF8E1/FF8A00?text=Brand+Imagery",
-    "https://placehold.co/600x400/FFF8E1/FF8A00?text=Brand+Imagery",
-    "https://placehold.co/600x400/FFF8E1/FF8A00?text=Brand+Imagery",
-    "https://placehold.co/600x400/FFF8E1/FF8A00?text=Brand+Imagery",
-    "https://placehold.co/600x400/FFF8E1/FF8A00?text=Brand+Imagery",
-    "https://placehold.co/600x400/FFF8E1/FF8A00?text=Brand+Imagery"
+    "https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1603569283847-aa295f0d016a?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1622597466542-9f150f8373a0?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1600271886742-f049cd451b66?auto=format&fit=crop&w=800&q=80"
   ];
 
   return (
