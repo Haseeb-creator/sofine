@@ -1,14 +1,37 @@
-import React from 'react';
+import { API_URL } from "../config";
+
+import React, { useState, useEffect } from 'react';
 import { Facebook, Instagram, Twitter, MapPin, Phone, Mail } from 'lucide-react';
+import axios from 'axios';
 
 const Footer = () => {
+  const [settings, setSettings] = useState({
+    email: 'hello@sofinejuice.com',
+    phone: '+1 (555) 123-4567',
+    footerText: 'Freshness in Every Sip. Premium juices, smoothies, and shakes made with 100% real ingredients.',
+  });
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const { data } = await axios.get(`${API_URL}/api/content/settings`);
+        if (data && data.email) {
+          setSettings(data);
+        }
+      } catch (err) {
+        console.log("Using default footer settings");
+      }
+    };
+    fetchSettings();
+  }, []);
+
   return (
     <footer className="bg-brand-dark text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 grid grid-cols-1 md:grid-cols-4 gap-10 border-b border-white/10 pb-12">
         <div className="col-span-1 md:col-span-1 border-r-none md:border-r border-white/10 pr-4">
           <h2 className="font-display font-bold text-3xl mb-4 text-brand-orange">Sofine <span className="text-brand-green">Juice</span></h2>
-          <p className="text-gray-400 mb-6 font-medium">Freshness in Every Sip. Premium juices, smoothies, and shakes made with 100% real ingredients.</p>
-          <div className="flex gap-4">
+          <p className="text-gray-400 mb-6 font-medium bg-brand-dark/20 p-4 rounded-xl shadow-inner border border-white/5">{settings.footerText}</p>
+          <div className="flex gap-4 mb-6">
             <a href="#" className="bg-white/10 hover:bg-brand-orange transition-colors p-2 rounded-full"><Facebook size={20} /></a>
             <a href="#" className="bg-white/10 hover:bg-brand-orange transition-colors p-2 rounded-full"><Instagram size={20} /></a>
             <a href="#" className="bg-white/10 hover:bg-brand-orange transition-colors p-2 rounded-full"><Twitter size={20} /></a>
@@ -46,11 +69,11 @@ const Footer = () => {
             </li>
             <li className="flex gap-3 items-center">
               <Phone className="text-brand-orange shrink-0" size={20} />
-              <span>+1 (555) 123-4567</span>
+              <span>{settings.phone}</span>
             </li>
             <li className="flex gap-3 items-center">
               <Mail className="text-brand-orange shrink-0" size={20} />
-              <span>hello@sofinejuice.com</span>
+              <span>{settings.email}</span>
             </li>
           </ul>
         </div>

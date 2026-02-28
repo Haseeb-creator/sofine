@@ -1,3 +1,5 @@
+import { API_URL } from "../config";
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, MapPin, Phone, Mail, Clock } from 'lucide-react';

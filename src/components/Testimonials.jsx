@@ -1,3 +1,5 @@
+import { API_URL } from "../config";
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';

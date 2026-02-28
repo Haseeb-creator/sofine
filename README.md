@@ -39,9 +39,29 @@ Make sure you have Node.js (v18+) installed.
 
 ## 🏗️ Project Structure
 - `/src/components` - Reusable UI sections
-- `/src/App.jsx` - Root application layout
-- `/src/index.css` - Global styles & Tailwind configuration
+- `/src/admin` - Protected Admin Dashboard
+- `/backend` - Node.js + Express API and SQLite Database
 - `/.github/workflows/deploy.yml` - CI/CD pipeline for GitHub Pages
+- `render.yaml` - Blueprint for automated Render backend deployment
+
+## 🚀 Deployment Guide (Production)
+
+This project uses a separated frontend (React) and backend (Node.js) architecture.
+
+### Step 1: Deploy Backend to Render
+1. Push this entire repository to your GitHub account.
+2. Sign up at [Render.com](https://render.com) and click **"New Blueprint Instance"**.
+3. Connect your GitHub repository.
+4. Render will automatically read the `render.yaml` file, provision a Node service, install dependencies, and start your backend securely.
+5. Once deployment is complete, copy the assigned **Render URL** (e.g., `https://sofine-api.onrender.com`).
+
+### Step 2: Deploy Frontend to GitHub Pages
+Since the frontend relies on Vite Environment Variables to find the new backend URL, you must add it to GitHub Secrets:
+1. Go to your GitHub Repository -> **Settings** -> **Secrets and variables** -> **Actions** -> **New repository secret**.
+2. Name the secret **`VITE_API_URL`**.
+3. Paste the assigned Render URL as the value.
+4. Go to the **Actions** tab in GitHub and manually run the `Deploy React App to GitHub Pages` workflow.
+5. Your public website and admin dashboard are now fully live and connected to your cloud backend!
 
 ## 🛠️ Built With
 - [React](https://reactjs.org/)

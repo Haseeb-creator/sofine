@@ -1,29 +1,50 @@
-import React from 'react';
+import { API_URL } from "../config";
+
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 
 const History = () => {
-  const milestones = [
-    {
-      year: "2015",
-      title: "The Humble Beginning",
-      description: "Started as a small cart in the local market by two health enthusiasts who couldn't find a genuinely fresh juice without added sugar in the city."
-    },
-    {
-      year: "2017",
-      title: "Opening the First Store",
-      description: "Driven by overwhelming community love, Sofine Juice Center opened its first physical outlet, introducing signature smoothies and hygiene standards."
-    },
-    {
-      year: "2020",
-      title: "Community Connection",
-      description: "During challenging times, we launched immune-boosting detox blends and initiated local farm partnerships to sustain pure ingredient sourcing."
-    },
-    {
-      year: "2024",
-      title: "Expanding the Vision",
-      description: "Now serving across multiple locations with a loyal following, continually innovating our menu while staying true to our core of 100% natural, hygienic preparation."
-    }
-  ];
+  const [content, setContent] = useState({
+    title: 'Roots of Sofine',
+    subtitle: 'From a simple idea to a beloved community brand, explore the timeline of our growth, driven by an unwavering commitment to health and taste.',
+    milestones: [
+      {
+        year: "2015",
+        title: "The Humble Beginning",
+        description: "Started as a small cart in the local market by two health enthusiasts who couldn't find a genuinely fresh juice without added sugar in the city."
+      },
+      {
+        year: "2017",
+        title: "Opening the First Store",
+        description: "Driven by overwhelming community love, Sofine Juice Center opened its first physical outlet, introducing signature smoothies and hygiene standards."
+      },
+      {
+        year: "2020",
+        title: "Community Connection",
+        description: "During challenging times, we launched immune-boosting detox blends and initiated local farm partnerships to sustain pure ingredient sourcing."
+      },
+      {
+        year: "2024",
+        title: "Expanding the Vision",
+        description: "Now serving across multiple locations with a loyal following, continually innovating our menu while staying true to our core of 100% natural, hygienic preparation."
+      }
+    ]
+  });
+
+  useEffect(() => {
+    const fetchJourney = async () => {
+      try {
+        const { data } = await axios.get(`${API_URL}/api/content/journey`);
+        if (data && data.milestones) {
+          setContent(data);
+        }
+      } catch (err) {
+        console.log("Using default journey content");
+      }
+    };
+    fetchJourney();
+  }, []);
 
   return (
     <section id="history" className="section-padding bg-brand-lightYellow relative overflow-hidden">
@@ -32,9 +53,17 @@ const History = () => {
       
       <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
         <span className="text-brand-orange font-semibold uppercase tracking-wider text-sm mb-2 block">Our Journey</span>
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">Roots of <span className="text-brand-green">Sofine</span></h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          {content.title.includes('Sofine') ? (
+            <>
+              {content.title.split('Sofine')[0]}<span className="text-brand-green">Sofine</span>{content.title.split('Sofine')[1]}
+            </>
+          ) : (
+            content.title
+          )}
+        </h2>
         <p className="text-gray-600 text-lg">
-          From a simple idea to a beloved community brand, explore the timeline of our growth, driven by an unwavering commitment to health and taste.
+          {content.subtitle}
         </p>
       </div>
 
@@ -43,7 +72,7 @@ const History = () => {
         <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-1 bg-brand-orange/30 -translate-x-1/2 rounded-full" />
 
         <div className="flex flex-col gap-12">
-          {milestones.map((item, index) => (
+          {content.milestones.map((item, index) => (
             <motion.div 
               key={index}
               initial={{ opacity: 0, y: 30 }}

@@ -1,15 +1,32 @@
-import React from 'react';
+import { API_URL } from "../config";
+
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 
 const Gallery = () => {
-  const images = [
+  const [images, setImages] = useState([
     "https://images.pexels.com/photos/1251175/pexels-photo-1251175.jpeg?auto=compress&cs=tinysrgb&w=800",
     "https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&w=800",
     "https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=800",
     "https://images.pexels.com/photos/4051082/pexels-photo-4051082.jpeg?auto=compress&cs=tinysrgb&w=800",
     "https://images.pexels.com/photos/1337825/pexels-photo-1337825.jpeg?auto=compress&cs=tinysrgb&w=800",
     "https://images.pexels.com/photos/616836/pexels-photo-616836.jpeg?auto=compress&cs=tinysrgb&w=800"
-  ];
+  ]);
+
+  useEffect(() => {
+    const fetchGallery = async () => {
+      try {
+        const { data } = await axios.get(`${API_URL}/api/content/gallery`);
+        if (data && data.images && data.images.length > 0) {
+          setImages(data.images);
+        }
+      } catch (err) {
+        console.log("Using default gallery images");
+      }
+    };
+    fetchGallery();
+  }, []);
 
   return (
     <section id="gallery" className="py-20 bg-brand-dark relative">

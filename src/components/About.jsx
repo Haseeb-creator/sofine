@@ -1,7 +1,37 @@
-import React from 'react';
+import { API_URL } from "../config";
+
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { ShieldCheck, Droplets, Leaf } from 'lucide-react';
+import axios from 'axios';
 
 const About = () => {
+  const [content, setContent] = useState({
+    title: 'Pure Goodness in Every Drop.',
+    content1: 'Welcome to Sofine Juice Center, where passion for health meets the love for extraordinary taste. We believe that what you put into your body matters, which is why we’re obsessed with freshness, hygiene, and uncompromising quality.',
+    content2: 'Every beverage we craft is a testament to our commitment to nature. From locally sourced, farm-fresh fruits to our rigorous hygiene protocols, we ensure that every sip you take is packed with vital nutrients and incredible flavor. No artificial additives, no refined sugars—just pure, unadulterated goodness.'
+  });
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const { data } = await axios.get(`${API_URL}/api/content/about`);
+        if (data && data.title) {
+          setContent(data);
+        }
+      } catch (err) {
+        console.log("Using default about content");
+      }
+    };
+    fetchContent();
+  }, []);
+
+  const features = [
+    { icon: <Leaf size={28} />, title: "100% Organic", desc: "No pesticides, no synthetic fertilizers." },
+    { icon: <Droplets size={28} />, title: "Cold-Pressed", desc: "Retaining maximum vitamins & enzymes." },
+    { icon: <ShieldCheck size={28} />, title: "No Preservatives", desc: "Made fresh daily, consumed fresh." }
+  ];
+
   return (
     <section id="about" className="section-padding bg-white relative">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -48,12 +78,12 @@ const About = () => {
           <div className="mb-2">
             <span className="text-brand-green font-semibold uppercase tracking-wider text-sm">About The Brand</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Pure Goodness in Every Drop.</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">{content.title}</h2>
           <p className="text-gray-600 mb-6 text-lg leading-relaxed">
-            Welcome to Sofine Juice Center, where passion for health meets the love for extraordinary taste. We believe that what you put into your body matters, which is why we’re obsessed with freshness, hygiene, and uncompromising quality.
+            {content.content1}
           </p>
           <p className="text-gray-600 mb-8 text-lg leading-relaxed">
-            Every beverage we craft is a testament to our commitment to nature. From locally sourced, farm-fresh fruits to our rigorous hygiene protocols, we ensure that every sip you take is packed with vital nutrients and incredible flavor. No artificial additives, no refined sugars—just pure, unadulterated goodness.
+            {content.content2}
           </p>
 
           <div className="grid grid-cols-2 gap-6 mt-8 border-t border-gray-100 pt-8">
